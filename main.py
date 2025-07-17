@@ -27,13 +27,13 @@ def root():
 def get_posts():
     return {"data": "First Post"} 
 
-@app.post("/createpost")
+@app.post("/createposts")
 # auto extract the content
-def create_post(new_post: Post): 
-    print(new_post)
+def create_post(post: Post): 
+    print(post)
     # you can use .dict() 
-    print(new_post.dict())
-    return {"message": "Post created" , "new_post": new_post}
+    print(post.dict())
+    return {"message": "Post created" , "new_post": post}
 
 
 # title -> str and content -> str , we can include wherether we want 

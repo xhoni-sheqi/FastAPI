@@ -47,3 +47,34 @@ we ultimately want to force the client to send data in schema that we expect
 for this we use pydentic
 
 from pydantic import BaseModel
+from typing import Optional
+
+
+# extends basemodel 
+# check typo 
+# check alll of the validation and design the schema 
+class Post(BaseModel):
+    title: str
+    content: str
+    published: bool = True
+    rating: Optional[int] = None
+
+
+
+@app.post("/createposts")
+# auto extract the content
+def create_post(post: Post): 
+    print(post)
+    # you can use .dict() 
+    print(post.dict())
+    return {"message": "Post created" , "new_post": post}
+
+
+# title -> str and content -> str , we can include wherether we want 
+
+use always plural name when refereng the routes 
+retrive data -> get 
+post data -> post 
+retrive specific data -> get
+upddate some data -> put/patch
+delete some data -> delete
