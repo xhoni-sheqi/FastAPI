@@ -45,3 +45,5 @@ the data isn't getting validated
 we ultimately want to force the client to send data in schema that we expect 
 
 for this we use pydentic
+
+from pydantic import BaseModel
