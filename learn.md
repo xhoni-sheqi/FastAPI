@@ -36,3 +36,12 @@ def create_post(payload: dict = Body(...)):
     print(payload)
     return {"message": "success"}
 Get the body 
+
+but we need to fix : 
+
+it's a pain to get all the values from the body 
+the client can send whatever data they want
+the data isn't getting validated 
+we ultimately want to force the client to send data in schema that we expect 
+
+for this we use pydentic
