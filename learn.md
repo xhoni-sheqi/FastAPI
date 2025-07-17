@@ -28,3 +28,11 @@ get -> you can perform all of http methods
 @app.get("/")
 
 if we have the same route the order metters
+
+https://www.itransition.com/careers/python-junior-developer
+
+@app.post("/createpost")
+def create_post(payload: dict = Body(...)):
+    print(payload)
+    return {"message": "success"}
+Get the body 
