@@ -20,3 +20,11 @@ app = FastAPI()
 #plain python function - name the function as descriptive as possible
 def root():
     return {"message": "Hello World"} 
+
+@ -> makes it a decorator | make it possible to be an API  
+app -> ref to our app 
+get -> you can perform all of http methods 
+("/") -> paths 
+@app.get("/")
+
+if we have the same route the order metters

@@ -7,3 +7,8 @@ app = FastAPI()
 #plain python function - name the function as descriptive as possible
 def root():
     return {"message": "Hello World"} 
+
+
+@app.get("/posts")
+def get_posts():
+    return {"data": "First Post"} 
