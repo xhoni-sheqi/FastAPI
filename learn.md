@@ -78,3 +78,6 @@ post data -> post
 retrive specific data -> get
 upddate some data -> put/patch
 delete some data -> delete
+
+# when working with api use top down approach and remember ORDER COUNTS 
+
