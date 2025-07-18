@@ -21,12 +21,18 @@ class Post(BaseModel):
 # save post [ no db ]
 
 # array to save ( db is a better choice indeed )
-my_posts = []
+my_posts = [{"title": "a", "content": "b", "published" : True , "rating": "123", "id" : 1},{"title": "a", "content": "b", "published" : True , "rating": "123", "id" : 2}]
 #search for a single post by id
 def find_post(id):
     for p in my_posts:
         if p['id'] == id:
             return p
+    return None
+
+def find_index_post(id):
+    for i,post in enumerate(my_posts):
+        if post['id'] == id:
+            return i
     return None
 
 #decorate - health check in the root 
@@ -36,13 +42,13 @@ def root():
     return {"message": "Hello World"} 
 
  
-# get all post 
+# get all post - 200 is for get and put
 
 @app.get("/posts")
 def get_posts():
     return {"data": my_posts} 
 
-# post a post
+# post a post - 201 is for post op
 
 @app.post("/posts")
 # auto extract the content
@@ -62,5 +68,16 @@ def get_post(id: int ,response: Response):
         # return {'message' : f"post with id {id} was not found"}
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id {id} was not found")
     return {"post": post}
+
+# delete  - 204 is for delete op
+
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_post(id: int):
+    #deleting post
+    # find the index in the array required ID
+    index = find_index_post(id)
+    my_posts.pop(index)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+    
 
 # title -> str and content -> str , we can include wherether we want 
